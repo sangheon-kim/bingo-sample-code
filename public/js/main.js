@@ -27,20 +27,58 @@ io.on("makeBingo", (data) => {
     $(this)[0].style.backgroundColor = "Gray";
     $(this).text("bingo");
 
-    LineCount(data.board);
+    LineCount(data.board, data.count);
   });
 });
 
-function LineCount(arr) {
+function LineCount(arr, count) {
   let row = 0;
   let col = 0;
   let cross = 0;
-}
-// $(document).ready(function () {
-//   $(".box").click(function () {
-//     console.log($(this));
-//     var id = $(this).attr("id");
 
-//     console.log(id);
-//   });
-// });
+  for (let i = 0; i < arr.length; i++) {
+    let check = false;
+
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] == 0) {
+        check = true;
+        console.log(arr[i][j]);
+      } else {
+        check = false;
+        break;
+      }
+    }
+
+    if (check) row++;
+  }
+
+  for (let i = 0; i < arr[0].length; i++) {
+    var check = false;
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[j][i] == 0) {
+        console.log(arr[j][i]);
+        check = true;
+      } else {
+        check = false;
+        break;
+      }
+    }
+
+    if (check) col++;
+  }
+
+  let right = 0;
+  let left = 0;
+
+  for (let i = 0; i < arr[0].length; i++) {
+    if (arr[i][i] == 0) right++; // 오른대각
+    if (arr[arr.length - i - 1][i] == 0) left++; // 왼대각
+    if (right == count || left == count) cross++;
+  }
+
+  if (right == count && left == count) cross++;
+  console.log(right);
+  console.log(left);
+
+  $("h1").text(`빙고개수 ${cross + row + col}`);
+}

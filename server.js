@@ -16,8 +16,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 io.on("connection", (socket) => {
-  var number = 5;
-  let board = bingo.MakeBingo2(number, 100, false);
+  let number = 5;
+  let maxNum = 100;
+
+  let board = bingo.MakeBingo2(number, maxNum, false);
   socket.emit(
     "makeBingo",
     {
@@ -26,6 +28,8 @@ io.on("connection", (socket) => {
     },
     bingo.lineBingo(board)
   );
+
+  socket.broadcast.emit("bingoNumber");
 });
 
 app.get("/", (req, res) => res.render("index.html"));
