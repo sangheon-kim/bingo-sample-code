@@ -27,11 +27,11 @@ io.on("makeBingo", (data) => {
     $(this)[0].style.backgroundColor = "Gray";
     $(this).text("bingo");
 
-    LineCount(data.board, data.count);
+    LineCount(data.board, data.count, data.bingoFinish);
   });
 });
 
-function LineCount(arr, count) {
+function LineCount(arr, count, finishCount) {
   let row = 0;
   let col = 0;
   let cross = 0;
@@ -79,6 +79,12 @@ function LineCount(arr, count) {
   if (right == count && left == count) cross++;
   console.log(right);
   console.log(left);
+  let sum = cross + row + col;
+  $("h1").text(`빙고개수 ${sum}`);
 
-  $("h1").text(`빙고개수 ${cross + row + col}`);
+  if (sum >= finishCount) {
+    $(".result-layer").show();
+  } else {
+    $(".result-layer").hide();
+  }
 }

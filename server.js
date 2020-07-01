@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 io.on("connection", (socket) => {
   let number = 5;
   let maxNum = 100;
+  let bingoFinish = 3;
 
   let board = bingo.MakeBingo2(number, maxNum, false);
   socket.emit(
@@ -25,6 +26,7 @@ io.on("connection", (socket) => {
     {
       board,
       count: number,
+      bingoFinish,
     },
     bingo.lineBingo(board)
   );

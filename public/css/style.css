@@ -22,3 +22,11 @@ span.bingo {
   background-color: yellow;
   color: lightgray;
 }
+
+.result-layer {
+  display: none;
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+  font-size: 24px;
+}
