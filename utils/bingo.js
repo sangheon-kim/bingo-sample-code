@@ -53,11 +53,12 @@ module.exports = {
       matCount++;
     }
 
-    console.log("array", array);
     return array;
   },
 
-  bingo(arr) {},
+  bingo(obj) {
+    console.log(obj);
+  },
 
   lineBingo(arr, board) {
     console.log("arr", arr);

@@ -16,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 io.on("connection", (socket) => {
-  var number = 3;
+  var number = 5;
   let board = bingo.MakeBingo2(number, 100, false);
   socket.emit(
     "makeBingo",

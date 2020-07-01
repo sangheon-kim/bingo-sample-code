@@ -17,3 +17,8 @@ span.box {
   border: 1px solid black;
   cursor: pointer;
 }
+
+span.bingo {
+  background-color: yellow;
+  color: lightgray;
+}
