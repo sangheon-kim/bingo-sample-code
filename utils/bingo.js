@@ -57,10 +57,10 @@ module.exports = {
   },
 
   bingo(obj) {
-    console.log(obj);
+    // console.log(obj);
   },
 
   lineBingo(arr, board) {
-    console.log("arr", arr);
+    // console.log("arr", arr);
   },
 };
